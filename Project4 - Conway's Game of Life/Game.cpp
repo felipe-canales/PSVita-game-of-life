@@ -20,7 +20,7 @@ Game::Game()
 {
 	is_running = false;
 	paused = true;
-	delay = 5;
+	delay = 9;
 	counter = 0;
 }
 
@@ -78,12 +78,10 @@ void Game::handle_events()
 		case SDL_QUIT:
 			is_running = false;
 			break;
-		case SDL_FINGERUP:
-			if (event.tfinger.touchId == FRONT_SCREEN && event.tfinger.fingerId == 0)
+		case SDL_MOUSEBUTTONDOWN:
 			{
-				int tile_x = (int)(event.tfinger.x * SCREEN_WIDTH / MATRIX_TILE_SIZE);
-				int tile_y = (int)(event.tfinger.y * SCREEN_HEIGHT / MATRIX_TILE_SIZE);
-				std::cout << tile_x << ", " << tile_y << std::endl;
+				int tile_x = (int)(event.button.x / MATRIX_TILE_SIZE);
+				int tile_y = (int)(event.button.y / MATRIX_TILE_SIZE);
 				game_matrix->toggle(tile_x, tile_y);
 			}
 			break;
@@ -101,10 +99,10 @@ void Game::handle_events()
 				paused = true;
 				counter = 0;
 			}
-			if (event.jbutton.button == L_BUTTON && delay < 10)
-				delay = delay + 1;
+			if (event.jbutton.button == L_BUTTON && delay < 15)
+				delay = delay + 2;
 			if (event.jbutton.button == R_BUTTON && delay > 1)
-				delay = delay - 1;
+				delay = delay - 2;
 			break;
 		default:
 			break;
@@ -114,7 +112,7 @@ void Game::handle_events()
 
 void Game::update()
 {
-	SDL_Delay(30);
+	SDL_Delay(10);
 	counter++;
 	if (!paused && counter > delay)
 	{
@@ -135,7 +133,7 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, rendered_matrix, NULL, &matrix_loc);
 
-	text->print("Speed: " + std::to_string(10 - delay), 10, line1);
+	text->print("Speed: " + std::to_string(9 - ((delay + 1) / 2)), 10, line1);
 	if (paused)
 	{
 		text->print("X: Unpause", 10, line2);
