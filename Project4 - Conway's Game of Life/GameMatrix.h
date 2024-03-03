@@ -3,8 +3,9 @@
 #include "Renderer.h"
 #include "SDL.h"
 
-int const HEIGHT = 5;
-int const WIDTH = 8;
+int const MATRIX_HEIGHT = 21;
+int const MATRIX_WIDTH = 40;
+int const MATRIX_TILE_SIZE = 24;
 
 class GameMatrix {
 public:
@@ -17,9 +18,8 @@ public:
 	SDL_Texture* render();
 private:
 	int neighbors(int x, int y);
-	bool matrix[HEIGHT][WIDTH];
-	bool next_matrix[HEIGHT][WIDTH];
-	SDL_Texture* texture;
+	bool matrix[MATRIX_HEIGHT][MATRIX_WIDTH];
+	bool next_matrix[MATRIX_HEIGHT][MATRIX_WIDTH];
 };
 
 #endif

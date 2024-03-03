@@ -2,6 +2,9 @@
 #define Renderer_h
 #include "SDL.h"
 
+int const SCREEN_HEIGHT = 544;
+int const SCREEN_WIDTH = 960;
+
 class Renderer
 {
 public:
@@ -14,9 +17,6 @@ protected:
 	Renderer(SDL_Window* window, int index, int flags);
 	static Renderer* renderer_;
 	SDL_Renderer* sdl_renderer;
-
-
-	int x;
 };
 
 #endif

@@ -9,7 +9,7 @@ public:
 	Game();
 	~Game();
 
-	void init(const char* title, int xpos, int ypos, int width, int height);
+	void init(const char* title);
 	void handle_events();
 	void update();
 	void render();
@@ -18,6 +18,9 @@ public:
 	bool running();
 private:
 	bool is_running;
+	bool paused;
+	int delay;
+	int counter;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 };
