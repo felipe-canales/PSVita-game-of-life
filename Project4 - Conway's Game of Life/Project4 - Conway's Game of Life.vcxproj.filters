@@ -24,9 +24,6 @@
     <ClCompile Include="TextHandler.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Console.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
       <Filter>Archivos de origen</Filter>
     </ClInclude>
     <ClInclude Include="TextHandler.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="Console.h">
       <Filter>Archivos de origen</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">

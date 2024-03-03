@@ -59,11 +59,11 @@ void Game::init(const char* title)
 
 	game_matrix = new GameMatrix();
 	text = new TextHandler();
-	game_matrix->toggle(31, 0);
-	game_matrix->toggle(32, 1);
-	game_matrix->toggle(30, 2);
-	game_matrix->toggle(31, 2);
-	game_matrix->toggle(32, 2);
+	game_matrix->toggle(21, 1);
+	game_matrix->toggle(22, 2);
+	game_matrix->toggle(20, 3);
+	game_matrix->toggle(21, 3);
+	game_matrix->toggle(22, 3);
 
 	SDL_JoystickEventState(SDL_ENABLE);
 	SDL_JoystickOpen(0);
@@ -77,16 +77,6 @@ void Game::handle_events()
 		switch (event.type) {
 		case SDL_QUIT:
 			is_running = false;
-			break;
-		case SDL_KEYDOWN:
-			if (event.key.keysym.sym == SDLK_a)
-			{
-				paused = !paused;
-			}
-			else if (event.key.keysym.sym == SDLK_d)
-			{
-				game_matrix->reset();
-			}
 			break;
 		case SDL_FINGERUP:
 			if (event.tfinger.touchId == FRONT_SCREEN && event.tfinger.fingerId == 0)
@@ -111,10 +101,10 @@ void Game::handle_events()
 				paused = true;
 				counter = 0;
 			}
-			if (event.jbutton.button == L_BUTTON)
-				delay = delay < 10 ? delay + 1 : 10;
-			if (event.jbutton.button == R_BUTTON)
-				delay = delay > 1 ? delay - 1 : 1;
+			if (event.jbutton.button == L_BUTTON && delay < 10)
+				delay = delay + 1;
+			if (event.jbutton.button == R_BUTTON && delay > 1)
+				delay = delay - 1;
 			break;
 		default:
 			break;

@@ -134,13 +134,11 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMatrix.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Console.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TextHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Console.h" />
     <ClInclude Include="GameMatrix.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TextHandler.h" />
